@@ -20,3 +20,10 @@ export interface Character {
   abilities: CharacterAbility[]
   tags: CharacterTag[]
 }
+export interface AbilitySet  {
+  power: number,
+  mobility: number,
+  technique: number,
+  survivability: number,
+  energy: number
+}
