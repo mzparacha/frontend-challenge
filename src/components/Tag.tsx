@@ -1,5 +1,5 @@
 import CheckIcon from '@mui/icons-material/Check';
-// Props
+// Prop Types
 type Props = {
   tag: string,
   onClick: (tag: string) => void,
@@ -8,11 +8,6 @@ type Props = {
 const Tag = (props: Props) => {
   // State
   const { tag, onClick, selected } = props;
-  //methods
-  const methods = {
-    //
-  };
-  // Effects
   // Render
   return (
     <div

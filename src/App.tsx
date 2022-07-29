@@ -1,4 +1,4 @@
-import Filter from "./components/Filter.component"
+import Filter from "./components/Filter"
 function App() {
   return (
     <Filter />

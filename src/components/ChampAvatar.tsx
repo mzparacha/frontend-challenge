@@ -1,10 +1,11 @@
 import { Character } from "../types";
-// Props
+// Props Types
 type Props = {
   character: Character,
   onRemove: (id: number) => void
 }
 const ChampAvatar = (props: Props) => {
+  // Props
   const { character, onRemove } = props;
   // Render
   return (

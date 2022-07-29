@@ -1,10 +1,10 @@
 import { Checkbox } from "@mui/material";
 import { useEffect, useState } from "react";
 import { AbilitySet, Character, CharacterAbility } from "../types";
-import Tag from "./Tag.component";
+import Tag from "./Tag";
 import { v4 as uuidv4 } from 'uuid';
 
-// Props
+// Props Types
 type Props = {
   character: Character,
   selected: boolean,
@@ -22,30 +22,29 @@ const ChampionRow = (props: Props) => {
     survivability: 0,
     energy: 0
   });
-  //methods
-  const methods = {
-    onMount: () => {
-      const { abilities } = character;
-      const reduction = abilities.reduce((acc: any, it: CharacterAbility) => {
-        acc[it.abilityName.toLowerCase()] = it.abilityScore;
-        return acc;
-      }, {})
-      setStats(reduction);
-    },
-    onSelect: () => {
-      onToggle(character.id);
-    },
-  };
   // Effects
   useEffect(() => {
-    methods.onMount();
+    onMount();
   }, [])
+  /* Method to run when the component gets rendered */
+  const onMount = () => {
+    const { abilities } = character;
+    const reduction = abilities.reduce((acc: any, it: CharacterAbility) => {
+      acc[it.abilityName.toLowerCase()] = it.abilityScore;
+      return acc;
+    }, {})
+    setStats(reduction);
+  };
+  /* Method to run with the checkbox is clicekd*/
+  const onSelect = () => {
+    onToggle(character.id);
+  }
   // Render
   return (
     <div className="flex w-full border-stone-200 border-b p-3" id="champs-row">
       <div className="w-[45%] flex">
         <div className="w-1/2">
-          <Checkbox checked={selected} onChange={methods.onSelect} />
+          <Checkbox checked={selected} onChange={onSelect} />
           {
             character.name
           }
